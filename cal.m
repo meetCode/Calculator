@@ -58,6 +58,17 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
+% **_OpeningFcn函数是GUI在打开时的执行的命令，此时GUI界面还没有显示出来
+s=what;
+filepppp=fullfile(s.path,'res','bg.jpg');
+backgroundImage = importdata(filepppp);
+% 选择坐标系
+axes(handles.axes1);
+% 将图片添加到坐标系中，于是就成了背景了
+image(backgroundImage);
+% 将坐标系的坐标轴标签去掉
+axis off
+
 % UIWAIT makes cal wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
