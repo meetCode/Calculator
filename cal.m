@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 24-Oct-2015 12:26:26
+% Last Modified by GUIDE v2.5 24-Oct-2015 13:18:38
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -126,5 +126,103 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % --- Executes on button press in pushbutton6.
 function pushbutton6_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton12.
+function pushbutton12_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton12 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton13.
+function pushbutton13_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton0.
+function pushbutton0_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton0 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in negate.
+function negate_Callback(hObject, eventdata, handles)
+% hObject    handle to negate (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in equal.
+function equal_Callback(hObject, eventdata, handles)
+% hObject    handle to equal (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in multiply.
+function multiply_Callback(hObject, eventdata, handles)
+% hObject    handle to multiply (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in add.
+function add_Callback(hObject, eventdata, handles)
+% hObject    handle to add (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in subtract.
+function subtract_Callback(hObject, eventdata, handles)
+% hObject    handle to subtract (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in point.
+function point_Callback(hObject, eventdata, handles)
+% hObject    handle to point (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in CE.
+function CE_Callback(hObject, eventdata, handles)
+% hObject    handle to CE (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in C.
+function C_Callback(hObject, eventdata, handles)
+% hObject    handle to C (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in del.
+function del_Callback(hObject, eventdata, handles)
+% hObject    handle to del (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in reciprocal.
+function reciprocal_Callback(hObject, eventdata, handles)
+% hObject    handle to reciprocal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
