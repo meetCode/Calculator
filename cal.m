@@ -467,18 +467,15 @@ function percent_Callback(hObject, eventdata, handles)
 % hObject    handle to percent (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
+global nex;
 global numend;
-global temp temp2;
 m='%';
-str=get(handles.display,'string');%TODO 改全局变量？
+str=get(handles.display,'string');
 set(handles.display,'string',[str m]);
-numend=1;
+
 nex=nex/100;
-pre=0;
-temp='';
-temp2='';
 set(handles.result,'string',nex);%按甲号后显示目前为止结果
+
 
 
 
@@ -488,7 +485,7 @@ function display_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hints: get(hObject,'String') returns contents of display as text
-%        str2double(get(hObject,'String')) returns contents of display as a double
+%        str2num(get(hObject,'String')) returns contents of display as a double
 
 
 % --- Executes during object creation, after setting all properties.
