@@ -319,10 +319,13 @@ function equal_Callback(hObject, eventdata, handles)
 % hObject    handle to equal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global op;
-str=get(handles.display,'string');
-str
-op='';
+global nex;
+global numend;
+global temp temp2;
+numend=1;
+temp='';
+temp2='';
+set(handles.result,'string',nex);%按甲号后显示目前为止结果
 
 % --- Executes on button press in multiply.
 function multiply_Callback(hObject, eventdata, handles)
