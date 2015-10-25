@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 25-Oct-2015 15:29:42
+% Last Modified by GUIDE v2.5 25-Oct-2015 18:43:26
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -346,6 +346,7 @@ temp='';
 temp2='';
 set(handles.result,'string',nex);%按甲号后显示目前为止结果
 
+
 % --- Executes on button press in add.
 function add_Callback(hObject, eventdata, handles)
 % hObject    handle to add (see GCBO)
@@ -404,7 +405,13 @@ function C_Callback(hObject, eventdata, handles)
 % hObject    handle to C (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+global temp temp2 pre nex numend;
+temp='';
+temp2='';
+pre=0; nex=0;
+numend=0;
+set(handles.display,'string','');
+set(handles.result,'string','');
 
 % --- Executes on button press in del.
 function del_Callback(hObject, eventdata, handles)
@@ -455,11 +462,23 @@ function double_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in mol.
-function mol_Callback(hObject, eventdata, handles)
-% hObject    handle to mol (see GCBO)
+% --- Executes on button press in percent.
+function percent_Callback(hObject, eventdata, handles)
+% hObject    handle to percent (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pre nex;
+global numend;
+global temp temp2;
+m='%';
+str=get(handles.display,'string');%TODO 改全局变量？
+set(handles.display,'string',[str m]);
+numend=1;
+nex=nex/100;
+pre=0;
+temp='';
+temp2='';
+set(handles.result,'string',nex);%按甲号后显示目前为止结果
 
 
 
