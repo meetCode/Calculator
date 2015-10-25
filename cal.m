@@ -329,7 +329,19 @@ function multiply_Callback(hObject, eventdata, handles)
 % hObject    handle to multiply (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+global pre nex;
+global numend;
+global temp temp2;
+m='*';
+str=get(handles.display,'string');%TODO 改全局变量？
+if(numend==1)
+    pre=pre*nex;
+end
+set(handles.display,'string',[str m]);
+numend=1;
+temp='';
+temp2='';
+set(handles.result,'string',nex);%按甲号后显示目前为止结果
 
 % --- Executes on button press in add.
 function add_Callback(hObject, eventdata, handles)
