@@ -59,8 +59,10 @@ handles.output = hObject;
 guidata(hObject, handles);
 
 %定义全局变量
-global  pre nex numend
+global  pre nex numend  fuhao sum
 global temp temp2
+sum=0;
+fuhao=0;
 pre=0;
 nex=0;
 temp='0';
@@ -116,17 +118,21 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pre nex;
 global numend;
-global temp temp2;
 m='1';%键值
 str=get(handles.display,'string');%获取display上已有表达式
 set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp,m);
+    pre=pre*10+str2num(m);
 else
-    temp2=strcat(temp2,m);
+    nex=nex*10+str2num(m);
 end
-
+if(numend==0)
+    set(handles.result,'string',num2str(pre));
+else
+    set(handles.result,'string',num2str(nex));
+end
 
 
 % --- Executes on button press in pushbutton2.
@@ -134,16 +140,16 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='2';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+cur = get(handles.result, 'String');
+is = get(handles.Cal_is, 'String');
+if cur(1) == ' ' | is == '1'
+    cur = '1';
 else
-    temp2=strcat(temp2,m);
+    cur(end) = '1';
 end
+cur = [cur, ' '];
+set(handles.result, 'String', cur);
+set(handles.Cal_is, 'String', '0');
 
 % --- Executes on button press in pushbutton3.
 function pushbutton3_Callback(hObject, eventdata, handles)
@@ -152,17 +158,13 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='3';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton4.
@@ -172,17 +174,13 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='4';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton5.
@@ -192,17 +190,13 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='5';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton6.
@@ -212,17 +206,13 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='6';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton7.
@@ -232,17 +222,13 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='7';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton8.
@@ -252,17 +238,13 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='8';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton9.
@@ -272,17 +254,13 @@ function pushbutton9_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='9';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in pushbutton0.
@@ -292,17 +270,13 @@ function pushbutton0_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global numend;
 global temp temp2;
-global pre nex;
 m='0';%键值
 str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%display追加输入的数字
-temp2=str;
+set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp2,m);
-    pre=str2num(temp);%如果数字没结束，pre继续赋值
+    temp=strcat(temp,m);
 else
     temp2=strcat(temp2,m);
-    nex=str2num(temp2);%r如果数字结束，新加数字赋给nex
 end
 
 % --- Executes on button press in negate.
@@ -317,13 +291,31 @@ function equal_Callback(hObject, eventdata, handles)
 % hObject    handle to equal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global nex;
+global pre nex;
+global fuhao sum;
 global numend;
-global temp temp2;
+%做完改switch
+if(fuhao==1)                %加
+    sum=pre+nex;
+    pre=sum;
+else if(fuhao==2)           %减
+        sum=pre-nex;
+        pre=sum;
+        if(fuhao==3)        %乘
+            sum=pre*num;
+            pre=sum;
+            if(fuhao==4)   %除
+                sum=pre/nex;
+                pre=sum;
+            end
+        end
+     end
+     sum=pre+nex;
+     pre=sum;
+end
+set(handles.result,'string',sum);%按甲号后显示目前为止结果
 numend=1;
-temp='';
-temp2='';
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+nex=0;
 
 % --- Executes on button press in multiply.
 function multiply_Callback(hObject, eventdata, handles)
@@ -350,19 +342,14 @@ function add_Callback(hObject, eventdata, handles)
 % hObject    handle to add (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-global temp temp2;
+global fuhao;
 m='+';
 str=get(handles.display,'string');%TODO 改全局变量？
 set(handles.display,'string',[str m]);
-pre=str2num(temp)+str2num(temp2);
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=1;
 
-temp=num2str(pre);
-numend=1;
-set(handles.result,'string',pre);%按甲号后显示目前为止结果
-pre
-temp2
 
 
 % --- Executes on button press in subtract.
@@ -370,19 +357,13 @@ function subtract_Callback(hObject, eventdata, handles)
 % hObject    handle to subtract (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-global temp temp2;
+global fuhao;
 m='-';
 str=get(handles.display,'string');%TODO 改全局变量？
-if(numend==1)
-    pre=pre-nex;
-end
 set(handles.display,'string',[str m]);
-numend=1;
-temp='';
-temp2='';
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=1;
 
 % --- Executes on button press in point.
 function point_Callback(hObject, eventdata, handles)

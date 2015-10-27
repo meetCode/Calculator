@@ -59,8 +59,10 @@ handles.output = hObject;
 guidata(hObject, handles);
 
 %定义全局变量
-global  pre nex numend
+global  pre nex numend  fuhao sum
 global temp temp2
+sum=0;
+fuhao=0;
 pre=0;
 nex=0;
 temp='0';
@@ -116,17 +118,21 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pre nex;
 global numend;
-global temp temp2;
 m='1';%键值
 str=get(handles.display,'string');%获取display上已有表达式
 set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp,m);
+    pre=pre*10+str2num(m);
 else
-    temp2=strcat(temp2,m);
+    nex=nex*10+str2num(m);
 end
-
+if(numend==0)
+    set(handles.result,'string',num2str(pre));
+else
+    set(handles.result,'string',num2str(nex));
+end
 
 
 % --- Executes on button press in pushbutton2.
@@ -134,15 +140,20 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pre nex;
 global numend;
-global temp temp2;
 m='2';%键值
 str=get(handles.display,'string');%获取display上已有表达式
 set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp,m);
+    pre=pre*10+str2num(m);
 else
-    temp2=strcat(temp2,m);
+    nex=nex*10+str2num(m);
+end
+if(numend==0)
+    set(handles.result,'string',num2str(pre));
+else
+    set(handles.result,'string',num2str(nex));
 end
 
 % --- Executes on button press in pushbutton3.
@@ -150,15 +161,20 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pre nex;
 global numend;
-global temp temp2;
 m='3';%键值
 str=get(handles.display,'string');%获取display上已有表达式
 set(handles.display,'string',[str m]);%在display追加显示输入的数字
 if(numend==0)
-    temp=strcat(temp,m);
+    pre=pre*10+str2num(m);
 else
-    temp2=strcat(temp2,m);
+    nex=nex*10+str2num(m);
+end
+if(numend==0)
+    set(handles.result,'string',num2str(pre));
+else
+    set(handles.result,'string',num2str(nex));
 end
 
 % --- Executes on button press in pushbutton4.
@@ -285,32 +301,44 @@ function equal_Callback(hObject, eventdata, handles)
 % hObject    handle to equal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global nex;
+global pre nex;
+global fuhao sum;
 global numend;
-global temp temp2;
+%做完改switch
+if(fuhao==1)                %加
+    sum=pre+nex;
+    pre=sum;
+else if(fuhao==2)           %减
+        sum=pre-nex;
+        pre=sum;
+        if(fuhao==3)        %乘
+            sum=pre*nex;
+            pre=sum;
+            if(fuhao==4)   %除
+                sum=pre/nex;
+                pre=sum;
+            end
+        end
+     end
+     sum=pre-nex;
+     pre=sum;
+end
+set(handles.result,'string',sum);%按甲号后显示目前为止结果
 numend=1;
-temp='';
-temp2='';
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+nex=0;
 
 % --- Executes on button press in multiply.
 function multiply_Callback(hObject, eventdata, handles)
 % hObject    handle to multiply (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-global temp temp2;
+global fuhao;
 m='*';
 str=get(handles.display,'string');%TODO 改全局变量？
-if(numend==1)
-    pre=pre*nex;
-end
 set(handles.display,'string',[str m]);
-numend=1;
-temp='';
-temp2='';
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=3;
 
 
 % --- Executes on button press in add.
@@ -318,17 +346,13 @@ function add_Callback(hObject, eventdata, handles)
 % hObject    handle to add (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre ;
-global numend;
-global temp temp2;
+global fuhao;
 m='+';
 str=get(handles.display,'string');%TODO 改全局变量？
 set(handles.display,'string',[str m]);
-pre=str2num(temp)+str2num(temp2);%第一次可能temp2没有赋值
-temp=num2str(pre);
-temp2='0';
-numend=1;
-set(handles.result,'string',pre);%按甲号后显示目前为止结果
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=1;
 
 
 
@@ -337,17 +361,13 @@ function subtract_Callback(hObject, eventdata, handles)
 % hObject    handle to subtract (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre ;
-global numend;
-global temp temp2;
+global fuhao;
 m='-';
 str=get(handles.display,'string');%TODO 改全局变量？
 set(handles.display,'string',[str m]);
-pre=str2num(temp)-str2num(temp2);%第一次可能temp2没有赋值
-temp=num2str(pre);
-temp2='0';
-numend=1;
-set(handles.result,'string',pre);%按甲号后显示目前为止结果
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=2;
 
 % --- Executes on button press in point.
 function point_Callback(hObject, eventdata, handles)
@@ -397,19 +417,13 @@ function division_Callback(hObject, eventdata, handles)
 % hObject    handle to division (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-global temp temp2;
+global fuhao;
 m='/';
 str=get(handles.display,'string');%TODO 改全局变量？
-if(numend==1)
-    pre=pre/nex;
-end
 set(handles.display,'string',[str m]);
-numend=1;
-temp='';
-temp2='';
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+%=================================================
+equal_Callback(hObject, eventdata, handles);
+fuhao=4;
 
 % --- Executes on button press in genhao.
 function genhao_Callback(hObject, eventdata, handles)
