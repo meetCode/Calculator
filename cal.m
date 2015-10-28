@@ -121,7 +121,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '1';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -140,7 +140,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '2';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -157,7 +157,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '3';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -174,7 +174,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '4';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -191,7 +191,7 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '5';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -208,7 +208,7 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '6';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -225,7 +225,7 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '7';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -242,7 +242,7 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '8';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -259,7 +259,7 @@ function pushbutton9_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '9';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -396,13 +396,10 @@ function C_Callback(hObject, eventdata, handles)
 % hObject    handle to C (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global temp temp2 pre nex numend;
-temp='';
-temp2='';
-pre=0; nex=0;
-numend=0;
-set(handles.display,'string','');
-set(handles.result,'string','');
+set(handles.cal_state, 'string', '0');
+set(handles.result, 'string', ' 0 ');
+set(handles.display, 'string', ' ');
+guidata(hObject, handles);
 
 % --- Executes on button press in del.
 function del_Callback(hObject, eventdata, handles)

@@ -121,8 +121,8 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '1';
-if str(1) == ' ' | is == m
-    str='1';
+if str(1) == ' ' | is == '1'
+    str=m;
 else
     str(end)=m;
 end
@@ -140,7 +140,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '2';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -156,8 +156,8 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
-m = '3';
-if str(1) == ' ' | is == m
+m = '2';
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -276,12 +276,14 @@ function pushbutton0_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '0';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
 end
-str=[str,' '];
+if str(1) ~= ' '
+    str = [str, ' '];
+end
 set(handles.result, 'string', str);
 set(handles.cal_state, 'string', '0');
 
@@ -394,13 +396,10 @@ function C_Callback(hObject, eventdata, handles)
 % hObject    handle to C (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global temp temp2 pre nex numend;
-temp='';
-temp2='';
-pre=0; nex=0;
-numend=0;
-set(handles.display,'string','');
-set(handles.result,'string','');
+set(handles.cal_state, 'string', '0');
+set(handles.result, 'string', ' 0 ');
+set(handles.display, 'string', ' ');
+guidata(hObject, handles);
 
 % --- Executes on button press in del.
 function del_Callback(hObject, eventdata, handles)
@@ -426,7 +425,12 @@ function division_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 formula= get(handles.display, 'string');
 is = get(handles.cal_state,'string');
+
 [formula, str, is]= deal(formula, str, is, '/');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
 
 
 % --- Executes on button press in genhao.
