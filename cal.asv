@@ -156,7 +156,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
-m = '2';
+m = '3';
 if str(1) == ' ' | is == '1'
     str=m;
 else
@@ -174,7 +174,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '4';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -191,7 +191,7 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '5';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -208,7 +208,7 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '6';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -225,7 +225,7 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '7';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -242,7 +242,7 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '8';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -259,7 +259,7 @@ function pushbutton9_Callback(hObject, eventdata, handles)
 str = get(handles.result,'string');
 is = get(handles.cal_state,'string');
 m = '9';
-if str(1) == ' ' | is == m
+if str(1) == ' ' | is == '1'
     str=m;
 else
     str(end)=m;
@@ -389,6 +389,9 @@ function CE_Callback(hObject, eventdata, handles)
 % hObject    handle to CE (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+is = get(handles.cal_state, 'string');
+
 
 
 % --- Executes on button press in C.

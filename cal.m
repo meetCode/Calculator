@@ -389,7 +389,18 @@ function CE_Callback(hObject, eventdata, handles)
 % hObject    handle to CE (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+str = get(handles.result, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' ' | is == '1'
+    ;
+elseif size(str, 2) > 2
+    str = str(1 : end-2);
+    str = [str ' '];
+else
+    str = ' 0 '
+end
+set(handles.result, 'string', str);
+    
 
 % --- Executes on button press in C.
 function C_Callback(hObject, eventdata, handles)
