@@ -393,7 +393,7 @@ str = get(handles.result, 'string');
 is = get(handles.cal_state, 'string');
 if str(1) == ' ' | is == '1'
     ;
-elseif size(str, 2) > 2
+elseif size(str, 2) > 2     %insure column>2
     str = str(1 : end-2);
     str = [str ' '];
 else
@@ -456,7 +456,37 @@ function double_Callback(hObject, eventdata, handles)
 % hObject    handle to double (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['(' num2str(s), ')^2'];
+    if s < 0
+        str = [num2str(s^2), ' '];
+    else
+        str = [num2str(s^2), ' '];
+        if formula(1) ~= ' '
+            for i = size(formula, 2) : -1 :1
+                if formula(i) == 's'
+                    formula = [formula(1 : i-1),'sqrt(', num2str(s), ') '];
+                    break;
+                elseif i == size(formula, 2)
+                    formula = [formula, 'sqrt(', num2str(s), ') '];
+                end
+            end
+        else
+            formula = ['sqrt(',num2str(s), ') '];
+        end
+    end
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+            
 
 % --- Executes on button press in percent.
 function percent_Callback(hObject, eventdata, handles)
