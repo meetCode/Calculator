@@ -118,21 +118,18 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-m='1';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    pre=pre*10+str2num(m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '1';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    nex=nex*10+str2num(m);
+    str(end)=m;
 end
-if(numend==0)
-    set(handles.result,'string',num2str(pre));
-else
-    set(handles.result,'string',num2str(nex));
-end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
+
 
 
 % --- Executes on button press in pushbutton2.
@@ -140,154 +137,155 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-m='2';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    pre=pre*10+str2num(m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '2';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    nex=nex*10+str2num(m);
+    str(end)=m;
 end
-if(numend==0)
-    set(handles.result,'string',num2str(pre));
-else
-    set(handles.result,'string',num2str(nex));
-end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton3.
 function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global numend;
-m='3';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    pre=pre*10+str2num(m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '3';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    nex=nex*10+str2num(m);
+    str(end)=m;
 end
-if(numend==0)
-    set(handles.result,'string',num2str(pre));
-else
-    set(handles.result,'string',num2str(nex));
-end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton4.
 function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='4';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '4';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton5.
 function pushbutton5_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='5';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '5';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton6.
 function pushbutton6_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton6 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='6';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '6';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton7.
 function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='7';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '7';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton8.
 function pushbutton8_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='8';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '8';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton9.
 function pushbutton9_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton9 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='9';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '9';
+if str(1) == ' ' | is == m
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+str=[str,' '];
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in pushbutton0.
 function pushbutton0_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton0 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global numend;
-global temp temp2;
-m='0';%键值
-str=get(handles.display,'string');%获取display上已有表达式
-set(handles.display,'string',[str m]);%在display追加显示输入的数字
-if(numend==0)
-    temp=strcat(temp,m);
+str = get(handles.result,'string');
+is = get(handles.cal_state,'string');
+m = '0';
+if str(1) == ' ' | is == '1'
+    str=m;
 else
-    temp2=strcat(temp2,m);
+    str(end)=m;
 end
+if str(1) ~= ' '
+    str = [str, ' '];
+end
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in negate.
 function negate_Callback(hObject, eventdata, handles)
@@ -374,7 +372,17 @@ function point_Callback(hObject, eventdata, handles)
 % hObject    handle to point (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+str=get(handles.result, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' ' | is == '1'
+    str = '0. ';
+elseif sum(str == '.') ~= 0
+    ;
+else
+    str = [str(1 : end-1) '. '];
+end
+set(handles.result, 'string', str);
+set(handles.cal_state, 'string', '0');
 
 % --- Executes on button press in CE.
 function CE_Callback(hObject, eventdata, handles)
@@ -417,13 +425,16 @@ function division_Callback(hObject, eventdata, handles)
 % hObject    handle to division (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global fuhao;
-m='/';
-str=get(handles.display,'string');%TODO 改全局变量？
-set(handles.display,'string',[str m]);
-%=================================================
-equal_Callback(hObject, eventdata, handles);
-fuhao=4;
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
+
+[formula, str, is]= deal(formula, str, is, '/');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
+
 
 % --- Executes on button press in genhao.
 function genhao_Callback(hObject, eventdata, handles)
