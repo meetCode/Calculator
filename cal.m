@@ -359,13 +359,15 @@ function subtract_Callback(hObject, eventdata, handles)
 % hObject    handle to subtract (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global fuhao;
-m='-';
-str=get(handles.display,'string');%TODO 改全局变量？
-set(handles.display,'string',[str m]);
-%=================================================
-equal_Callback(hObject, eventdata, handles);
-fuhao=2;
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
+
+[formula, str, is]= deal(formula, str, is, '-');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
 
 % --- Executes on button press in point.
 function point_Callback(hObject, eventdata, handles)
@@ -424,7 +426,24 @@ function reciprocal_Callback(hObject, eventdata, handles)
 % hObject    handle to reciprocal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
 
+if str(1) == ' '
+    formula = ['rec(0) '];
+    str = 'Error Input ';
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    if s == 0
+        str = 'Error Input ';
+    else
+        formula = ['rec(',num2str(1/s), ') '];
+        str = [num2str(1/s), ' '];
+    end
+end
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
 
 
 
