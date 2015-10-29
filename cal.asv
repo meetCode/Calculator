@@ -465,7 +465,23 @@ else
     str = str(1 : end-1);
     s = str2num(str);
     formula = ['(' num2str(s), ')^2'];
-    str = [num2str(s^2), ' '];
+    if s < 0
+        str = [num2str(s^2), ' '];
+    else
+        str = [num2str(s^2), ' '];
+        if formula(1) ~= ' '
+            for i = size(formula, 2) : -1 :1
+                if formula(i) == 's'
+                    formula = [formula(1 : i-1),'sqrt(', num2str(s), ') '];
+                    break;
+                elseif i == size(formula, 2)
+                    formula = [formula, 'sqrt(', num2str(s), ') '];
+                end
+            end
+        else
+            formula = ['sqrt(',num2str(s), ') '];
+        end
+    end
 end
 set(handles.result, 'string',str);
 set(handles.display, 'string',formula);
