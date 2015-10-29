@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 25-Oct-2015 18:43:26
+% Last Modified by GUIDE v2.5 29-Oct-2015 10:29:26
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -282,6 +282,16 @@ function negate_Callback(hObject, eventdata, handles)
 % hObject    handle to negate (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' ' | is == '1'
+    ;
+elseif str(1) == '-'
+    str = str(2 : end);
+else
+    str = ['-' str];
+end
+set(handles.result, 'string', str);
 
 
 % --- Executes on button press in equal.
@@ -403,6 +413,17 @@ function del_Callback(hObject, eventdata, handles)
 % hObject    handle to del (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' ' | is == '1'
+    ;
+elseif size(str, 2) > 2     %insure column>2
+    str = str(1 : end-2);
+    str = [str ' '];
+else
+    str = ' 0 '
+end
+set(handles.result, 'string', str);
 
 
 % --- Executes on button press in reciprocal.
@@ -447,11 +468,29 @@ set(handles.display, 'string', formula);
 set(handles.cal_state, 'string', is);
 
 
-% --- Executes on button press in genhao.
-function genhao_Callback(hObject, eventdata, handles)
-% hObject    handle to genhao (see GCBO)
+% --- Executes on button press in sqrt.
+function sqrt_Callback(hObject, eventdata, handles)
+% hObject    handle to sqrt (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    formula = [formula, 'sqrt(0)'];
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['sqrt(', num2str(s), ') '];
+    if s <0
+        str = 'Error Input ';
+    else 
+        str = [num2str(sqrt(s)), ' '];
+    end
+end
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state,'string', '1');
 
 
 % --- Executes on button press in double.
@@ -475,19 +514,20 @@ set(handles.display, 'string',formula);
 set(handles.cal_state, 'string' ,'1');
             
 
-% --- Executes on button press in percent.
-function percent_Callback(hObject, eventdata, handles)
-% hObject    handle to percent (see GCBO)
+% --- Executes on button press in mol.
+function mol_Callback(hObject, eventdata, handles)
+% hObject    handle to mol (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global nex;
-global numend;
-m='%';
-str=get(handles.display,'string');
-set(handles.display,'string',[str m]);
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
 
-nex=nex/100;
-set(handles.result,'string',nex);%按甲号后显示目前为止结果
+[formula, str, is]= deal(formula, str, is, '%');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
 
 
 
