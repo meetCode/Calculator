@@ -1,2 +1,2 @@
 # Calculator
-a calculator written by Matlab
+a calculator based on Matlab
