@@ -29,7 +29,7 @@ else
                     z = a / b;
                 end
             case {'%'}
-                z = a & b;
+                z = mod(a, b);%a & b;
         end
         zz = num2str(z)
         formula = [zz ''];

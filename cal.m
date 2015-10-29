@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 29-Oct-2015 10:29:26
+% Last Modified by GUIDE v2.5 29-Oct-2015 20:38:19
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -389,9 +389,6 @@ str = get(handles.result, 'string');
 is = get(handles.cal_state, 'string');
 if str(1) == ' ' | is == '1'
     ;
-elseif size(str, 2) > 2     %insure column>2
-    str = str(1 : end-2);
-    str = [str ' '];
 else
     str = ' 0 '
 end
@@ -514,9 +511,9 @@ set(handles.display, 'string',formula);
 set(handles.cal_state, 'string' ,'1');
             
 
-% --- Executes on button press in mol.
-function mol_Callback(hObject, eventdata, handles)
-% hObject    handle to mol (see GCBO)
+% --- Executes on button press in mod.
+function mod_Callback(hObject, eventdata, handles)
+% hObject    handle to mod (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 str = get(handles.result,'string');
