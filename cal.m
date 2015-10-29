@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 29-Oct-2015 20:38:19
+% Last Modified by GUIDE v2.5 29-Oct-2015 22:32:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -549,3 +549,155 @@ function display_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --------------------------------------------------------------------
+function Untitled_1_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_2_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in extend.
+function extend_Callback(hObject, eventdata, handles)
+% hObject    handle to extend (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+open('extend.fig');
+% Hint: get(hObject,'Value') returns toggle state of extend
+
+
+% --- Executes on button press in sin.
+function sin_Callback(hObject, eventdata, handles)
+% hObject    handle to sin (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['sin(' num2str(s), '`)'];
+    str = [num2str( sind(s) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+
+
+% --- Executes on button press in cos.
+function cos_Callback(hObject, eventdata, handles)
+% hObject    handle to cos (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['cos(' num2str(s), '`)'];
+    str = [num2str( cosd(s) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+
+
+
+% --- Executes on button press in atan.
+function atan_Callback(hObject, eventdata, handles)
+% hObject    handle to atan (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['atan(' num2str(s), '`)'];
+    str = [num2str( atan(s * pi /180) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+
+% --- Executes on button press in asin.
+function asin_Callback(hObject, eventdata, handles)
+% hObject    handle to asin (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['asin(' num2str(s), '`)'];
+    str = [num2str( asin(s * pi /180) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+
+
+% --- Executes on button press in acos.
+function acos_Callback(hObject, eventdata, handles)
+% hObject    handle to acos (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['acos(' num2str(s), '`)'];
+    str = [num2str( acos(s * pi /180) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
+
+
+
+
+
+% --- Executes on button press in tan.
+function tan_Callback(hObject, eventdata, handles)
+% hObject    handle to tan (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+str = get(handles.result, 'string');
+formula = get(handles.display, 'string');
+is = get(handles.cal_state, 'string');
+if str(1) == ' '
+    ;
+else
+    str = str(1 : end-1);
+    s = str2num(str);
+    formula = ['tan(' num2str(s), '`)'];
+    str = [num2str( tand(s) ), ' '];
+end
+set(handles.result, 'string',str);
+set(handles.display, 'string',formula);
+set(handles.cal_state, 'string' ,'1');
