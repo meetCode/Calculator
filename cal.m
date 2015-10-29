@@ -58,16 +58,6 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
-%定义全局变量
-global  pre nex numend  fuhao sum
-global temp temp2
-sum=0;
-fuhao=0;
-pre=0;
-nex=0;
-temp='0';
-temp2='0';
-numend=0;
 % 设置背景图片
 s=what;
 filepppp=fullfile(s.path,'res','bg.jpg');
@@ -299,44 +289,36 @@ function equal_Callback(hObject, eventdata, handles)
 % hObject    handle to equal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global pre nex;
-global fuhao sum;
-global numend;
-%做完改switch
-if(fuhao==1)                %加
-    sum=pre+nex;
-    pre=sum;
-else if(fuhao==2)           %减
-        sum=pre-nex;
-        pre=sum;
-        if(fuhao==3)        %乘
-            sum=pre*nex;
-            pre=sum;
-            if(fuhao==4)   %除
-                sum=pre/nex;
-                pre=sum;
-            end
-        end
-     end
-     sum=pre-nex;
-     pre=sum;
-end
-set(handles.result,'string',sum);%按甲号后显示目前为止结果
-numend=1;
-nex=0;
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
+
+[formula, str, is]= deal(formula, str, is, '=');%only need str
+
+formula = ' ';
+is = '1';
+s = str2num(str);
+str = [num2str(s) ' '];
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
+
 
 % --- Executes on button press in multiply.
 function multiply_Callback(hObject, eventdata, handles)
 % hObject    handle to multiply (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global fuhao;
-m='*';
-str=get(handles.display,'string');%TODO 改全局变量？
-set(handles.display,'string',[str m]);
-%=================================================
-equal_Callback(hObject, eventdata, handles);
-fuhao=3;
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
+
+[formula, str, is]= deal(formula, str, is, '*');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
 
 
 % --- Executes on button press in add.
@@ -344,13 +326,15 @@ function add_Callback(hObject, eventdata, handles)
 % hObject    handle to add (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global fuhao;
-m='+';
-str=get(handles.display,'string');%TODO 改全局变量？
-set(handles.display,'string',[str m]);
-%=================================================
-equal_Callback(hObject, eventdata, handles);
-fuhao=1;
+str = get(handles.result,'string');
+formula= get(handles.display, 'string');
+is = get(handles.cal_state,'string');
+
+[formula, str, is]= deal(formula, str, is, '+');
+
+set(handles.result, 'string', str);
+set(handles.display, 'string', formula);
+set(handles.cal_state, 'string', is);
 
 
 
