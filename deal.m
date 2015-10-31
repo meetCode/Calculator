@@ -31,7 +31,7 @@ else
             case {'%'}
                 z = mod(a, b);%a & b;
         end
-        zz = num2str(z)
+        zz = num2str(z);
         formula = [zz ''];
         str = [zz ' '];
     else
