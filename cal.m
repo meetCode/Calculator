@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 31-Oct-2015 17:43:35
+% Last Modified by GUIDE v2.5 31-Oct-2015 18:59:50
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -697,4 +697,13 @@ end
 set(handles.result, 'string',str);
 set(handles.display, 'string',formula);
 set(handles.cal_state, 'string' ,'1');
+
+
+
+% --- Executes on button press in Game.
+function Game_Callback(hObject, eventdata, handles)
+% hObject    handle to Game (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+xpbombs;
 
