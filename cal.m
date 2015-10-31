@@ -22,7 +22,7 @@ function varargout = cal(varargin)
 
 % Edit the above text to modify the response to help cal
 
-% Last Modified by GUIDE v2.5 29-Oct-2015 22:32:36
+% Last Modified by GUIDE v2.5 31-Oct-2015 17:43:35
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -58,16 +58,10 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
-% 设置背景图片
-s=what;
-filepppp=fullfile(s.path,'res','bg.jpg');
-backgroundImage = importdata(filepppp);
-% 选择坐标系
-axes(handles.axes1);
-% 将图片添加到坐标系中，于是就成了背景了
-image(backgroundImage);
-% 将坐标系的坐标轴标签去掉
-axis off
+%BackgroundMusic
+BackgroundMusic();
+
+
 
 
 
@@ -552,8 +546,8 @@ end
 
 
 % --------------------------------------------------------------------
-function Untitled_1_Callback(hObject, eventdata, handles)
-% hObject    handle to Untitled_1 (see GCBO)
+function asdf1_Callback(hObject, eventdata, handles)
+% hObject    handle to asdf1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -701,3 +695,4 @@ end
 set(handles.result, 'string',str);
 set(handles.display, 'string',formula);
 set(handles.cal_state, 'string' ,'1');
+
