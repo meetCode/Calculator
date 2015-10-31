@@ -61,6 +61,8 @@ guidata(hObject, handles);
 %BackgroundMusic
 BackgroundMusic();
 
+set(gcf,'numberTitle','off','name','Ëï²ý¿¡£¬¹âµç1°à£¬2013041101');
+
 
 
 
